@@ -7,11 +7,9 @@ html(lang="ko")
     body
         include partials/header                
         main
+            include partials/chart 
             block content
-              include partials/chart
-                  li 
-                     each song,index in list 
-                           +song(index,song)
+            
         
         include partials/footer
     script(src="/static/js/main.js") 
