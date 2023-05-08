@@ -1,6 +1,7 @@
 import { google } from "googleapis";
 import Song from "../models/Song";
 
+//yutube API
 const youtube = google.youtube({
   version: "v3",
   auth: process.env.YOUTUBE_API,
@@ -42,7 +43,7 @@ musiChart();
 
 export const home = async (req, res) => {
   try {
-    const songs = await Song.find({}).sort({ views: "desc" });
+    const songs = await Song.find({}).limit(10);
     return res.render("home", { pageTitle: "Home", data: songs });
   } catch (error) {
     return res.render("Server Error");
