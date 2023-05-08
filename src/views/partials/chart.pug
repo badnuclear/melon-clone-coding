@@ -1,9 +1,9 @@
 
-mixin song(index,song)
-   li 
-     div 
-        h1=index+1
-     div 
-        img(src=song.snippet.coverImg.default.url)   
-     div 
-        h2=song.snippet.title 
+h1 Top 10
+  ul.top-header   
+    each song,index in data  
+      li.rank Rank 
+        span=index+1
+      li.song Song
+        img(src=`${song.thumbnails}`).coverImg
+        span.title=song.title   
