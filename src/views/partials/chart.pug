@@ -1,9 +1,14 @@
-
-h1 Top 10
-  ul.top-header   
-    each song,index in data  
-      li.rank Rank 
-        span=index+1
-      li.song Song
-        img(src=`${song.thumbnails}`).coverImg
-        span.title=song.title   
+div.chart-container
+  nav
+     h1 Top 10
+       ul.top-header   
+         each song,index in data  
+           li.rank Rank 
+             span=index+1
+           li.song Song
+             img(src=`${song.thumbnails}`).coverImg
+             span.title=song.title
+           li.play Play 
+             i.fas.fa-play    
+           li.view View 
+             span=song.views     

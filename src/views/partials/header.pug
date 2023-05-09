@@ -1,6 +1,13 @@
 header
-      a(href="/") Honey
-      nav 
-          li 
-             div
-                 a(href="./users/kakao/start") Kakao Login
+    a(href="/").header__logo Honey 
+    nav 
+         ul 
+            if loggedIn 
+                 li.header__user 
+                   span=`Hello ${loggedInUser.name}`
+                 li.header__user 
+                   a(href="./users/playlist").header_btn My Playlist
+                 li.header_logout     
+                   a(href="./users/logout").header_btn Logout 
+            else 
+                  a(href="./users/kakao/start").header_btn Kakao Login
