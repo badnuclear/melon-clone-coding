@@ -40,24 +40,16 @@ export const musiChart = (req, res) => {
   );
 };
 musiChart();
-const getSong = async (req, res) => {
-  try {
-    const musics = await Song.find({}, { _id: 0 }).sort({ views: "desc" });
-    return musics;
-  } catch (error) {
-    console.log(error);
-    return res.render("Music Data not send");
-  }
-};
 
 //home
 export const home = async (req, res) => {
   try {
-    const songs = await Song.find({ videoId: { $exists: true } }).limit(10);
+    const songs = await Song.find({}).limit(10);
+    const musics = await Song.find({}, { _id: 0 }).sort({ views: "desc" });
     return res.render("home", {
       pageTitle: "Home",
       data: songs,
-      musics: await getSong(),
+      musics: musics,
     });
   } catch (error) {
     console.log(error);
