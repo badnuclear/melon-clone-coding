@@ -12,7 +12,7 @@ const title = document.querySelector(".title");
 const coverImg = document.querySelector(".coverImg");
 const currentTime = document.querySelector(".current-time");
 const fullTime = document.querySelector(".full-time");
-
+const timeBar = document.querySelector(".time-bar");
 //유튜브 ifreme api 셋팅
 //ifame 태그를 지정할 id 요소 지정
 let player;
@@ -58,9 +58,8 @@ function onYouTubeIframeAPIReady() {
 // 맨 첫번째 뮤직
 
 function onPlayerReady(event) {}
-function onPlayerStateChange() {}
 //뮤직 컨트롤러
-let currentIndex = 0;
+let currentIndex = -1;
 let nextShuffled = false;
 let playing = "none";
 let currentVideoId = "none";
@@ -92,7 +91,9 @@ function playPlayer() {
   playing = currentMusic[currentIndex];
   currentVideoId = playing.videoId;
   player.loadVideoById(currentVideoId);
-  coverImg.style.backgroundImage = `url(${playing.thumbnails})`;
+  coverImg.style.backgroundImage = `url(https://i.ytimg.com/vi/${playing.videoId}/default.jpg)`;
+  console.log(playing.thumbnails);
+  updateCoverImg();
   title.textContent = playing.title;
 }
 function nextHander() {
@@ -124,13 +125,25 @@ function preHander() {
   }
   playPlayer();
 }
-
 ///타임바
+function onPlayerStateChange() {}
+
+//이미지 업데이트
+let currentCoverUrl = "";
+function updateCoverImg() {
+  playing = currentMusic[currentIndex];
+  currentCoverUrl = playing.videoId;
+  const covers = document.querySelectorAll(".player .coverImg");
+  covers.forEach((cover) => {
+    cover.style.backgroundImage = `url(https://i.ytimg.com/vi/${currentCoverUrl}/default.jpg)`;
+  });
+}
 
 //add Event 리스너
 preBtn.addEventListener("click", preHander);
 playBtn.addEventListener("click", clickHandler);
 nextBtn.addEventListener("click", nextHander);
+
 ///플레이 리스트
 
 //api 실행
