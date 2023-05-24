@@ -2,6 +2,11 @@ main {
   display: flex;
 }
 #musicPlayer {
+  .title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   #current-song {
     .player {
       .coverImg {
@@ -13,5 +18,15 @@ main {
         background-size: cover;
       }
     }
+  }
+  .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .controll-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

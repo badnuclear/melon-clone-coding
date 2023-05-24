@@ -2,18 +2,24 @@ div#musicPlayer
        div#current-song 
            div.player 
              img.coverImg
-           span.title   
-       div.time-bar 
-            div.current-bar       
-       div.time 
-            span.current-time 00:00 
-            span.full-time 00:00
-            span.time-bar
-       div.control      
-           div.btn     
-              i#preBtn.fa.fa-backward-step
-              i#playBtn.playIcon.fas.fa-play  
-              i#nextBtn.fa.fa-forward-step
+           span.title
+       div.controll-box       
+          div.time-bar 
+               div      
+          div.time 
+               span.current-time 00:00 
+               span  /    
+               span.full-time 00:00
+               input(type="range", step="1", value=0,min="0").time-bar
+          div.controll      
+              div.btn     
+                 i#preBtn.fa.fa-backward-step
+                 i#playBtn.playIcon.fas.fa-play  
+                 i#nextBtn.fa.fa-forward-step
+              div.volume-control
+                input#volume(type="range", step="1", value=50,min="0",max="100")   
+                div#mute 
+                   i#muteBtn.fas.fa-volume-up     
        div#player    
 
 
